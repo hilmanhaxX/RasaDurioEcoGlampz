@@ -60,20 +60,63 @@ nav a{
   font-weight:500;
   transition:color 0.3s;
 }
+
 nav a.active{
   background:rgba(255,218,185,0.2);
   padding:6px 10px;
   border-radius:8px;
 }
 
-
 nav a:hover{
   color:#FFF5E1;
 }
 
-nav div{
+/* ===== NAV LINKS ===== */
+.nav-links{
   display:flex;
   gap:18px;
+}
+
+/* ===== HAMBURGER ===== */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+}
+
+.hamburger span{
+  width:25px;
+  height:3px;
+  background:var(--peach);
+  border-radius:3px;
+}
+
+/* ===== MOBILE NAV ===== */
+@media(max-width:768px){
+  .hamburger{
+    display:flex;
+  }
+
+  .nav-links{
+    position:absolute;
+    top:70px;
+    right:20px;
+    background:var(--green-dark);
+    flex-direction:column;
+    padding:15px;
+    border-radius:14px;
+    box-shadow:0 6px 14px rgba(0,0,0,.25);
+    display:none;
+  }
+
+  .nav-links.show{
+    display:flex;
+  }
+
+  .nav-links a{
+    margin:10px 0;
+  }
 }
 
 /* ===== CONTENT ===== */
@@ -133,10 +176,17 @@ footer{
     <img src="images/logo.png" alt="Logo" class="logo">
     <strong>Rasa Durio Eco Glampz</strong>
   </div>
-  <div>
-<a href="index.html">Home</a>
-<a href="facilities.html" class="active">Facilities & Accommodation</a>
-<a href="Collab.html">Partners</a>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="facilities.html" class="active">Facilities & Accommodation</a>
+    <a href="Collab.html">Partners</a>
   </div>
 </nav>
 
@@ -299,6 +349,12 @@ footer{
 </main>
 
 <footer>© 2025 Rasa Durio Eco Glampz</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("show");
+}
+</script>
 
 </body>
 </html>
